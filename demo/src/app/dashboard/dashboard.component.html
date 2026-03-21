@@ -1,0 +1,53 @@
+<div class="dashboard-container">
+  <header class="dashboard-header">
+    <h1>Analytics Dashboard</h1>
+    <div class="header-actions">
+      <span class="last-updated">Last updated: {{ getFormattedDate() }}</span>
+      <button (click)="refresh()">Refresh</button>
+    </div>
+  </header>
+
+  <section class="stats-overview">
+    <div class="stat-card" *ngFor="let stat of getStatCards()">
+      <span class="stat-label">{{ stat.label }}</span>
+      <span class="stat-value">{{ formatNumber(stat.value) }}</span>
+      <span class="stat-trend" [class.positive]="isPositiveTrend(stat)">
+        {{ calculateTrend(stat) }}%
+      </span>
+    </div>
+  </section>
+
+  <section class="charts-section">
+    <div class="chart-panel" *ngIf="hasChartData()">
+      <h3>Revenue Over Time</h3>
+      <div #revenueChart class="chart-container"></div>
+    </div>
+
+    <div class="chart-panel" *ngIf="hasChartData()">
+      <h3>User Activity</h3>
+      <div #activityChart class="chart-container"></div>
+    </div>
+  </section>
+
+  <section class="data-table-section">
+    <h3>Recent Orders</h3>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Order ID</th>
+          <th>Customer</th>
+          <th>Amount</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of getFilteredOrders()">
+          <td>{{ order.id }}</td>
+          <td>{{ order.customer }}</td>
+          <td>{{ formatCurrency(order.amount) }}</td>
+          <td [class]="getStatusClass(order.status)">{{ order.status }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</div>

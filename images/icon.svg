@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <!-- Background -->
+  <rect width="128" height="128" rx="16" fill="#1e1e2e"/>
+
+  <!-- Angular shield shape -->
+  <path d="M64 12 L108 30 L102 92 L64 116 L26 92 L20 30 Z" fill="none" stroke="#dd0031" stroke-width="2.5" opacity="0.3"/>
+
+  <!-- Graph nodes -->
+  <!-- Component nodes (blue) -->
+  <circle cx="64" cy="42" r="10" fill="#4fc3f7"/>
+  <circle cx="38" cy="72" r="8" fill="#4fc3f7"/>
+
+  <!-- Service nodes (green) -->
+  <circle cx="90" cy="72" r="9" fill="#81c784"/>
+  <circle cx="64" cy="96" r="7" fill="#81c784"/>
+
+  <!-- Edges -->
+  <line x1="64" y1="52" x2="38" y2="64" stroke="#666" stroke-width="1.5" opacity="0.6"/>
+  <line x1="64" y1="52" x2="90" y2="63" stroke="#666" stroke-width="1.5" opacity="0.6"/>
+  <line x1="38" y1="80" x2="64" y2="89" stroke="#666" stroke-width="1.5" opacity="0.6"/>
+  <line x1="90" y1="81" x2="64" y2="89" stroke="#666" stroke-width="1.5" opacity="0.6"/>
+
+  <!-- Circular dep highlight -->
+  <line x1="40" y1="68" x2="86" y2="68" stroke="#ef5350" stroke-width="2" stroke-dasharray="4,2" opacity="0.8"/>
+
+  <!-- AI sparkle -->
+  <g transform="translate(98,24)" fill="#ce93d8" opacity="0.9">
+    <path d="M0,-8 L2,-2 L8,0 L2,2 L0,8 L-2,2 L-8,0 L-2,-2 Z"/>
+  </g>
+  <g transform="translate(108,36)" fill="#ce93d8" opacity="0.5">
+    <path d="M0,-4 L1,-1 L4,0 L1,1 L0,4 L-1,1 L-4,0 L-1,-1 Z"/>
+  </g>
+</svg>

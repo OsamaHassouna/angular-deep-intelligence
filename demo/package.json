@@ -1,0 +1,25 @@
+{
+  "name": "adi-demo-app",
+  "version": "1.0.0",
+  "description": "Demo Angular project with intentional anti-patterns for testing Angular Deep Intelligence",
+  "scripts": {
+    "start": "ng serve",
+    "build": "ng build"
+  },
+  "dependencies": {
+    "@angular/core": "^17.0.0",
+    "@angular/common": "^17.0.0",
+    "@angular/compiler": "^17.0.0",
+    "@angular/forms": "^17.0.0",
+    "@angular/platform-browser": "^17.0.0",
+    "@angular/platform-browser-dynamic": "^17.0.0",
+    "@angular/router": "^17.0.0",
+    "rxjs": "^7.8.0",
+    "zone.js": "^0.14.0"
+  },
+  "devDependencies": {
+    "@angular/cli": "^17.0.0",
+    "@angular/compiler-cli": "^17.0.0",
+    "typescript": "~5.2.0"
+  }
+}

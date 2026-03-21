@@ -1,0 +1,202 @@
+{
+  "name": "angular-deep-intelligence",
+  "displayName": "Angular Deep Intelligence",
+  "description": "AI-powered Angular code intelligence: anti-pattern detection, migration readiness, architecture insights",
+  "version": "0.4.0",
+  "publisher": "osama-hassouna",
+  "license": "MIT",
+  "icon": "images/icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/osama-hassouna/angular-deep-intelligence"
+  },
+  "homepage": "https://github.com/osama-hassouna/angular-deep-intelligence#readme",
+  "bugs": {
+    "url": "https://github.com/osama-hassouna/angular-deep-intelligence/issues"
+  },
+  "galleryBanner": {
+    "color": "#1e1e2e",
+    "theme": "dark"
+  },
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Linters",
+    "Programming Languages",
+    "Visualization"
+  ],
+  "keywords": [
+    "angular",
+    "typescript",
+    "code-analysis",
+    "anti-patterns",
+    "migration",
+    "signals",
+    "standalone",
+    "architecture",
+    "dependency-graph",
+    "ai"
+  ],
+  "activationEvents": [
+    "onCommand:adi.scanProject",
+    "onCommand:adi.clearDiagnostics",
+    "onCommand:adi.showDependencyGraph",
+    "workspaceContains:**/angular.json"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "adi.scanProject",
+        "title": "ADI: Scan Project"
+      },
+      {
+        "command": "adi.clearDiagnostics",
+        "title": "ADI: Clear All Diagnostics"
+      },
+      {
+        "command": "adi.explainDiagnostic",
+        "title": "ADI: Explain Issue with AI"
+      },
+      {
+        "command": "adi.generateMigrationPlan",
+        "title": "ADI: Generate Migration Plan with AI"
+      },
+      {
+        "command": "adi.selectAiModel",
+        "title": "ADI: Select AI Provider"
+      },
+      {
+        "command": "adi.showDependencyGraph",
+        "title": "ADI: Show Dependency Graph"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "adi-explorer",
+          "title": "Angular Deep Intelligence",
+          "icon": "$(shield)"
+        }
+      ]
+    },
+    "views": {
+      "adi-explorer": [
+        {
+          "id": "adiDashboard",
+          "name": "Health Dashboard"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Angular Deep Intelligence",
+      "properties": {
+        "adi.rules.missingUnsubscribe": {
+          "type": "boolean",
+          "default": true,
+          "description": "Detect .subscribe() calls without proper cleanup"
+        },
+        "adi.rules.missingOnPush": {
+          "type": "boolean",
+          "default": true,
+          "description": "Detect components missing OnPush change detection"
+        },
+        "adi.rules.oversizedComponent": {
+          "type": "boolean",
+          "default": true,
+          "description": "Detect components exceeding line threshold"
+        },
+        "adi.rules.directDomManipulation": {
+          "type": "boolean",
+          "default": true,
+          "description": "Detect direct DOM access bypassing Angular abstractions"
+        },
+        "adi.rules.templateMethodCalls": {
+          "type": "boolean",
+          "default": true,
+          "description": "Detect method calls in templates that run every CD cycle"
+        },
+        "adi.rules.standaloneReadiness": {
+          "type": "boolean",
+          "default": true,
+          "description": "Score NgModule components on standalone migration readiness"
+        },
+        "adi.rules.signalsMigration": {
+          "type": "boolean",
+          "default": true,
+          "description": "Detect RxJS patterns that could use Angular Signals"
+        },
+        "adi.rules.circularServiceDeps": {
+          "type": "boolean",
+          "default": true,
+          "description": "Detect circular dependency chains between services"
+        },
+        "adi.rules.lazyLoadingOpportunities": {
+          "type": "boolean",
+          "default": true,
+          "description": "Detect routes and modules that could benefit from lazy loading"
+        },
+        "adi.rules.sharedModuleBloat": {
+          "type": "boolean",
+          "default": true,
+          "description": "Detect SharedModules that are too large and should be split"
+        },
+        "adi.oversizedThreshold": {
+          "type": "number",
+          "default": 300,
+          "description": "Line count threshold for oversized component rule"
+        },
+        "adi.excludePaths": {
+          "type": "array",
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "description": "Glob patterns to exclude from scanning"
+        },
+        "adi.chatProvider": {
+          "type": "string",
+          "default": "auto",
+          "description": "Which AI chat extension to use for 'Explain with AI' and migration plans. Use 'auto' to detect installed extensions, or set a specific provider ID (e.g. copilot, cline, continue, cody, amazon-q, codegpt, gemini, or any extension ID)."
+        },
+        "adi.aiModel": {
+          "type": "string",
+          "default": "auto",
+          "description": "AI model to use. 'auto' picks the best available from your VS Code chat models. Or set a specific model ID."
+        },
+        "adi.claudeApiKey": {
+          "type": "string",
+          "default": "",
+          "description": "Fallback: Claude API key for direct API access (used only if no VS Code chat models are available). Get one at console.anthropic.com"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "compile-tests": "tsc -p ./tsconfig.test.json",
+    "pretest": "npm run compile-tests && npm run compile",
+    "test": "node ./out/test/runTest.js",
+    "lint": "eslint src",
+    "package:vsix": "vsce package"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.6",
+    "@types/node": "^20.11.0",
+    "@types/vscode": "^1.90.0",
+    "@vscode/test-electron": "^2.3.8",
+    "@vscode/vsce": "^3.7.1",
+    "mocha": "^10.2.0",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.3.3",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "ts-morph": "^24.0.0"
+  }
+}

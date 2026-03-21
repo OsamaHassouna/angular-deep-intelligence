@@ -1,0 +1,7 @@
+<div>
+  <p>Count: {{ count }}</p>
+  <ul>
+    <li *ngFor="let item of data">{{ item }}</li>
+  </ul>
+  <button (click)="loadMore()">Load More</button>
+</div>
