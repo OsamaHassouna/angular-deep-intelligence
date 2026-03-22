@@ -4,7 +4,7 @@
 [![Angular](https://img.shields.io/badge/Angular-17+-DD0031?logo=angular&logoColor=white)](https://angular.dev/)
 [![VS Code](https://img.shields.io/badge/VS%20Code-Extension-007ACC?logo=visualstudiocode&logoColor=white)](https://code.visualstudio.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
-[![Tests](https://img.shields.io/badge/Tests-75%20passing-brightgreen)]()
+[![Tests](https://img.shields.io/badge/Tests-84%2B%20passing-brightgreen)]()
 
 **AI-powered Angular code intelligence for VS Code.** Detects anti-patterns, migration readiness, and architecture issues using deep AST analysis with ts-morph.
 
@@ -12,14 +12,30 @@ Built to catch what linters miss: subscription leaks, circular dependencies, sig
 
 ## Screenshots
 
-> Screenshots coming soon. In the meantime, try it yourself with the included [demo project](#try-it-yourself).
+### Inline Diagnostics
+Real-time anti-pattern detection with hover tooltips explaining the issue and how to fix it.
 
-<!-- TODO: Add screenshots
-![Health Dashboard](images/screenshot-dashboard.png)
 ![Inline Diagnostics](images/screenshot-diagnostics.png)
+
+### Quick Fix Actions
+One-click fixes: add `takeUntilDestroyed()`, switch to `OnPush`, explain with AI, generate migration plans.
+
+![Quick Fix Actions](images/screenshot-quickfix.png)
+
+### Dependency Graph
+Interactive D3.js force-directed graph. Circular dependencies highlighted in red.
+
 ![Dependency Graph](images/screenshot-graph.png)
-![AI Explanation](images/screenshot-ai-explain.png)
--->
+
+### Project Overview
+Full project scan with file-level diagnostics and health scoring.
+
+![Project Overview](images/screenshot-dashboard.png)
+
+### Status Bar
+Live health score with issue breakdown. Click to re-scan.
+
+![Status Bar](images/screenshot-statusbar.png)
 
 ## Features
 
@@ -117,7 +133,7 @@ The repo includes a `demo/` project - a small Angular app with intentional anti-
 
 ```bash
 # 1. Clone and install
-git clone https://github.com/osama-hassouna/angular-deep-intelligence.git
+git clone https://github.com/OsamaHassouna/angular-deep-intelligence.git
 cd angular-deep-intelligence
 npm install
 
@@ -151,7 +167,7 @@ npm run compile
 - **[VS Code Extension API](https://code.visualstudio.com/api)** - Diagnostics, CodeActions, TreeView, Webview, StatusBar
 - **[VS Code Language Model API](https://code.visualstudio.com/api/extension-guides/language-model)** - AI provider abstraction
 - **[D3.js](https://d3js.org/)** - Force-directed dependency graph visualization
-- **[Mocha](https://mochajs.org/) + [@vscode/test-electron](https://github.com/nicedoc/vscode-test)** - 75 tests (unit + integration)
+- **[Mocha](https://mochajs.org/) + [@vscode/test-electron](https://github.com/nicedoc/vscode-test)** - 84+ tests (unit + integration)
 
 ## License
 
